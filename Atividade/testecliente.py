@@ -1,5 +1,6 @@
 import requests
-URL = 'http://127.0.0.1:8080'
+URL = 'http://127.0.0.1:8080/'
+
 r = requests.get(URL)
 
-print(r.content)
+print(r.text)
