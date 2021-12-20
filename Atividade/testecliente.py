@@ -1,7 +1,17 @@
 import requests
-URL = 'http://127.0.0.1:8080/'
 
+r1 = requests.get("http://127.0.0.1:8080")
+print(r1.text)
 while True:
-    r = requests.get(URL)
-    print(r.text)
+   try:
+      r = requests.post("http://127.0.0.1:8080", data=(input('R= ')))
+   except ValueError:
+      continue
+   print(r.text)
+
+
+
+
+
+
 
