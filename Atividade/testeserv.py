@@ -1,6 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from interface import *
-import logging
 
 hostName = "127.0.0.1"
 serverPort = 8080
