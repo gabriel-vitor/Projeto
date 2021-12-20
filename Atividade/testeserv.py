@@ -20,11 +20,11 @@ class MyServer(BaseHTTPRequestHandler):
     def do_POST(self):
         length = int(self.headers["Content-Length"])
         msg = str(self.rfile.read(length), 'utf-8')
-        cabecalho("MENSAGEM RECEBIDA (CLIENTE): " + msg)
+        cabecalho("\033[32mMENSAGEM RECEBIDA (CLIENTE)> \033[m" + f'\033[32m{msg}\033[m')
         #print()
-        linha(len('MENSAGEM RECEBIDA (CLIENTE)') + len(msg))
+        linha(len('MENSAGEM RECEBIDA (CLIENTE)> ') + len(msg))
 
-        response = bytes(input('ENVIAR MENSAGEM VIA SERVIDOR: '), "utf-8")  # create response
+        response = bytes(input('\033[34mENVIAR MENSAGEM VIA SERVIDOR> \033[m'), "utf-8")  # create response
 
         self._set_response()
         self.wfile.write(response)# send response
@@ -34,7 +34,8 @@ if __name__ == "__main__":
     webServer = HTTPServer((hostName, serverPort), MyServer)
     #print("Server started http://%s:%s" % (hostName, serverPort))
     #print(f"Serv Started http:// {hostName}: {serverPort}")
-    cabecalho(f"SERVIDOR INICIADO\n>>{hostName}:{serverPort}")
+    linha(20)
+    cabecalho(f"\033[35m SERVIDOR INICIADO\n  {hostName}:{serverPort}\033[m")
     linha(20)
 
     try:
